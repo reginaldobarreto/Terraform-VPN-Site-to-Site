@@ -82,5 +82,5 @@ resource "azurerm_virtual_network_gateway_connection" "cn01" {
   virtual_network_gateway_id = azurerm_virtual_network_gateway.vgw01.id
   local_network_gateway_id   = azurerm_local_network_gateway.lgw01.id
 
-  shared_key = "sh4r3d-k3y"
+  shared_key = "sh4r3dk3y"
 }

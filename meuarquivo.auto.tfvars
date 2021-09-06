@@ -3,15 +3,15 @@
 
 rg_name                     = "rg-terraform-lab-001"
 loc_name                    = "eastus"
-tag_dev                     = { Ambiente = "Dev", Responsavel = "Reginaldo Barreto", Squad = "Devops" }
-vnet_name                   = "vnet-dev-eastus-001"
-vnet01_name                 = "vnet-dev-westus-001"
+tag_dev                     = { Ambiente = "Devs", Responsavel = "Reginaldo Barreto", Squad = "Devops" }
+vnet_name                   = "vnet-devs-eastus-001"
+vnet01_name                 = "vnet-devs-westus-001"
 snet01_name                 = "snet-devs-eastus-001"
 snet02_name                 = "snet-prod-eastus-001"
 snet01_vnet01_name          = "snet-devs-westus-001"
 snetgw_name                 = "GatewaySubnet"
-vgw01_name                  = "vgw-dev-eastus-001"
-lgw01_name                  = "lgw-dev-eastus-001"
+vgw01_name                  = "vgw-devs-eastus-001"
+lgw01_name                  = "lgw-devs-eastus-001"
 vnet_address_space          = ["10.0.0.0/20", "192.168.0.0/16", "172.16.0.0/16"]
 vnet01_address_space        = "10.99.0.0/20"
 snet01_vnet01_address_space = "10.99.1.0/24"

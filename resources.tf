@@ -17,7 +17,7 @@ resource "azurerm_virtual_network" "vnet" {
 resource "azurerm_virtual_network" "vnet01" {
   name                = var.vnet01_name
   resource_group_name = azurerm_resource_group.rg.name
-  location            = var.loc_name
+  location            = "westus"
   address_space       = [var.vnet01_address_space]
 }
 
@@ -62,6 +62,22 @@ resource "azurerm_local_network_gateway" "lgw01" {
   location            = var.loc_name
   gateway_address     = var.lgw_gw_address
   address_space       = [var.lgw_snet01_address_space]
+}
+
+resource "azurerm_virtual_network_peering" "vnet_peer_1" {
+  name                      = "peer1to2"
+  resource_group_name       = azurerm_resource_group.rg.name
+  virtual_network_name      = azurerm_virtual_network.vnet.name
+  remote_virtual_network_id = azurerm_virtual_network.vnet01.id
+  allow_gateway_transit     = true
+}
+
+resource "azurerm_virtual_network_peering" "vnet_peer_2" {
+  name                      = "peer2to1"
+  resource_group_name       = azurerm_resource_group.rg.name
+  virtual_network_name      = azurerm_virtual_network.vnet01.name
+  remote_virtual_network_id = azurerm_virtual_network.vnet.id
+  allow_gateway_transit     = true
 }
 
 resource "azurerm_public_ip" "pip01" {

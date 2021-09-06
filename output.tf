@@ -2,7 +2,7 @@
 # assim escolhendo o nome de saida do recurso independente do idioma
 
 output "grupo_de_recurso" {
-  value = azurerm_resource_group.rg.id  
+  value = azurerm_resource_group.rg.id
 }
 
 output "rede_virtual" {
@@ -17,8 +17,12 @@ output "subnet_prod" {
   value = azurerm_subnet.snet_prod.id
 }
 
+output "subnet_bastion" {
+  value = azurerm_subnet.snet_bas.id
+}
+
 output "subnet_gw" {
-  value = azurerm_subnet.snetgw.id
+  value = azurerm_subnet.snet_gw.id
 }
 
 output "gateway_local" {
@@ -27,6 +31,14 @@ output "gateway_local" {
 
 output "ip_public_vpn" {
   value = azurerm_public_ip.pip01.id
+}
+
+output "ip_public_bastion" {
+  value = azurerm_public_ip.pip_bas.id
+}
+
+output "bastion_host" {
+  value = azurerm_bastion_host.bas_host.id
 }
 
 output "gateway_virtual" {

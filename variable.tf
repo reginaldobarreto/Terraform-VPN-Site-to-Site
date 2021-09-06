@@ -10,7 +10,7 @@ variable "loc_name" {
 }
 
 variable "tag_dev" {
-  
+
 }
 
 variable "vnet_name" {
@@ -18,19 +18,23 @@ variable "vnet_name" {
 }
 
 variable "vnet_address_space" {
-  
+
 }
 
 variable "snet01_address_space" {
-  
+
 }
 
 variable "snet02_address_space" {
-  
+
+}
+
+variable "snet_bas_address_space" {
+
 }
 
 variable "snetgw_address_space" {
-  
+
 }
 
 variable "snet01_name" {
@@ -39,6 +43,10 @@ variable "snet01_name" {
 
 variable "snet02_name" {
   default = "snet2"
+}
+
+variable "snet_bas_name" {
+  default = "AzureBastionSubnet"
 }
 
 variable "snetgw_name" {
@@ -58,13 +66,21 @@ variable "lgw_snet01_address_space" {
 }
 
 variable "lgw_gw_address" {
-  
+
 }
 
 variable "pip01_name" {
   default = "pip-001"
 }
 
+variable "pip_bas_name" {
+  default = "pip_bas-001"
+}
+
 variable "cn_lgw_name" {
   default = "cn_connection"
+}
+
+variable "bas_host_name" {
+  default = "bas_host"
 }

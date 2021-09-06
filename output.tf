@@ -5,8 +5,12 @@ output "grupo_de_recurso" {
   value = azurerm_resource_group.rg.id
 }
 
-output "rede_virtual" {
+output "rede_virtual_eastus" {
   value = azurerm_virtual_network.vnet.id
+}
+
+output "rede_virtual_westus" {
+  value = azurerm_virtual_network.vnet01.id
 }
 
 output "subnet_dev" {
@@ -15,6 +19,10 @@ output "subnet_dev" {
 
 output "subnet_prod" {
   value = azurerm_subnet.snet_prod.id
+}
+
+output "subnet_vnet01" {
+  value = azurerm_subnet.snet_vnet01.id
 }
 
 output "subnet_bastion" {

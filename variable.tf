@@ -84,3 +84,19 @@ variable "cn_lgw_name" {
 variable "bas_host_name" {
   default = "bas_host"
 }
+
+variable "vnet01_name" {
+  default = "vnet01"
+}
+
+variable "snet01_vnet01_name" {
+  default = "sbunet01"
+}
+
+variable "vnet01_address_space" {
+
+}
+
+variable "snet01_vnet01_address_space" {
+
+}

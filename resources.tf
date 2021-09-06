@@ -14,6 +14,13 @@ resource "azurerm_virtual_network" "vnet" {
   address_space       = [element(var.vnet_address_space, 0)]
 }
 
+resource "azurerm_virtual_network" "vnet01" {
+  name                = var.vnet01_name
+  resource_group_name = azurerm_resource_group.rg.name
+  location            = var.loc_name
+  address_space       = [var.vnet01_address_space]
+}
+
 resource "azurerm_subnet" "snet_dev" {
   name                 = var.snet01_name
   resource_group_name  = azurerm_resource_group.rg.name
@@ -33,6 +40,13 @@ resource "azurerm_subnet" "snet_bas" {
   resource_group_name  = azurerm_resource_group.rg.name
   virtual_network_name = azurerm_virtual_network.vnet.name
   address_prefixes     = [var.snet_bas_address_space]
+}
+
+resource "azurerm_subnet" "snet_vnet01" {
+  name                 = var.snet01_vnet01_name
+  resource_group_name  = azurerm_resource_group.rg.name
+  virtual_network_name = azurerm_virtual_network.vnet.name
+  address_prefixes     = [var.snet01_vnet01_address_space]
 }
 
 resource "azurerm_subnet" "snet_gw" {

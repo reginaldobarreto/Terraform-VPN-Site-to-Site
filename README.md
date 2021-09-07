@@ -7,9 +7,9 @@ O objetivo era propagar o o Gateway Virtual entre as duas Vnets, de forma que a 
 
 ## Diagrama dos Resources
 
-|![Image 1](https://github.com/reginaldobarreto/Terraform-VPN-Site-to-Site/blob/main/snap.png)
+![Azure Resources](https://github.com/reginaldobarreto/Terraform-VPN-Site-to-Site/blob/main/snap.png)
 
 
 ## PFSense
 
-|![Image 1](https://github.com/reginaldobarreto/Terraform-VPN-Site-to-Site/blob/main/snap.png)
+![PFSense](https://github.com/reginaldobarreto/Terraform-VPN-Site-to-Site/blob/main/ipsec-azure2_gateway_transit.png)

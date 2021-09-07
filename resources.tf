@@ -7,6 +7,25 @@ resource "azurerm_resource_group" "rg" {
   location = var.loc_name
 }
 
+resource "azurerm_public_ip" "pip01" {
+  name                = var.pip01_name
+  resource_group_name = azurerm_resource_group.rg.name
+  location            = var.loc_name
+  allocation_method   = "Dynamic"
+
+  tags = var.tag_dev
+}
+
+resource "azurerm_public_ip" "pip_bas" {
+  name                = var.pip_bas_name
+  location            = var.loc_name
+  resource_group_name = azurerm_resource_group.rg.name
+  allocation_method   = "Static"
+  sku                 = "Standard"
+
+  tags = var.tag_dev
+}
+
 resource "azurerm_virtual_network" "vnet" {
   name                = var.vnet_name
   resource_group_name = azurerm_resource_group.rg.name
@@ -65,38 +84,23 @@ resource "azurerm_local_network_gateway" "lgw01" {
 }
 
 resource "azurerm_virtual_network_peering" "vnet_peer_1" {
-  name                      = "peer1to2"
-  resource_group_name       = azurerm_resource_group.rg.name
-  virtual_network_name      = azurerm_virtual_network.vnet.name
-  remote_virtual_network_id = azurerm_virtual_network.vnet01.id
-  allow_gateway_transit     = true
+  name                         = "peer1to2"
+  resource_group_name          = azurerm_resource_group.rg.name
+  virtual_network_name         = azurerm_virtual_network.vnet.name
+  remote_virtual_network_id    = azurerm_virtual_network.vnet01.id
+  allow_virtual_network_access = true
+  allow_forwarded_traffic      = true
+  allow_gateway_transit        = true
 }
 
 resource "azurerm_virtual_network_peering" "vnet_peer_2" {
-  name                      = "peer2to1"
-  resource_group_name       = azurerm_resource_group.rg.name
-  virtual_network_name      = azurerm_virtual_network.vnet01.name
-  remote_virtual_network_id = azurerm_virtual_network.vnet.id
-  allow_gateway_transit     = true
-}
-
-resource "azurerm_public_ip" "pip01" {
-  name                = var.pip01_name
-  resource_group_name = azurerm_resource_group.rg.name
-  location            = var.loc_name
-  allocation_method   = "Dynamic"
-
-  tags = var.tag_dev
-}
-
-resource "azurerm_public_ip" "pip_bas" {
-  name                = var.pip_bas_name
-  location            = var.loc_name
-  resource_group_name = azurerm_resource_group.rg.name
-  allocation_method   = "Static"
-  sku                 = "Standard"
-
-  tags = var.tag_dev
+  name                         = "peer2to1"
+  resource_group_name          = azurerm_resource_group.rg.name
+  virtual_network_name         = azurerm_virtual_network.vnet01.name
+  remote_virtual_network_id    = azurerm_virtual_network.vnet.id
+  allow_virtual_network_access = true
+  allow_forwarded_traffic      = true
+  allow_gateway_transit        = true
 }
 
 resource "azurerm_virtual_network_gateway" "vgw01" {
